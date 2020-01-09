@@ -1,0 +1,38 @@
+{
+  "required": true,
+  "package": "net.gudenau.minecraft.tallworlds.mixin",
+  "compatibilityLevel": "JAVA_8",
+  "mixins": [
+    "chunk.ChunkHolderMixin",
+    "chunk.ChunkMixin",
+    "chunk.ChunkSerializerMixin",
+    "chunk.ChunkTickSchedulerMixin",
+    "chunk.ProtoChunkMixin",
+
+    "network.ChunkDataS2CPacketMixin",
+    "network.ChunkDeltaUpdateS2CPacketMixin",
+    "network.ClientPlayPacketListenerMixin",
+
+    "server.IntegratedServerMixin",
+    "server.ServerPropertiesHandlerMixin",
+    "server.ServerTickSchedulerMixin",
+
+    "world.WorldViewMixin",
+    "world.WorldChunkMixin",
+    "world.WorldMixin",
+
+    "HeightmapMixin",
+    "SerializingRegionBasedStorageMixin",
+    "ThreadedAnvilChunkStorageMixin"
+  ],
+  "client": [
+    "client.BuiltChunkStorageMixin",
+    "client.WorldRendererMixin",
+    "client.ChunkBorderDebugRendererMixin",
+
+    "network.ClientPlayNetworkHandlerMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "id": "gud_tallworlds",
+  "version": "${version}",
+
+  "name": "Tall Worlds",
+  "description": "Worlds are so short.",
+  "authors": [
+    "gudenau"
+  ],
+  "contact": {
+    "homepage": "https://github.com/gudenau/minecraft-tallworlds",
+    "sources": "https://github.com/gudenau/minecraft-tallworlds"
+  },
+
+  "license": "",
+  "icon": "assets/gud_tallworlds/icon.png",
+
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "net.gudenau.minecraft.tallworlds.TallWorlds"
+    ]
+  },
+  "mixins": [
+    "gud_tallworlds.mixins.json"
+  ],
+
+  "depends": {
+    "fabricloader": ">=0.7.2",
+    "minecraft": "1.15.x"
+  },
+  "suggests": {}
+}

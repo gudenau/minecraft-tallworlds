@@ -3,24 +3,47 @@
   "package": "net.gudenau.minecraft.tallworlds.mixin",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
+    "biome.BiomeMixin",
+
+    "block.ChorusFlowerBlockMixin",
+    "block.LavaFluidMixin",
+
     "chunk.ChunkHolderMixin",
     "chunk.ChunkMixin",
     "chunk.ChunkSerializerMixin",
     "chunk.ChunkTickSchedulerMixin",
     "chunk.ProtoChunkMixin",
 
+    "command.SpreadPlayersCommandMixin",
+
+    "entity.FallingBlockEntityMixin",
+
     "gen.BranchedTreeFeatureMixin",
+    "gen.CarverMixin",
+    "gen.ChunkGeneratorConfigMixin",
+    "gen.ChunkGeneratorMixin",
     "gen.DarkOakTreeFeatureMixin",
+    "gen.FlatChunkGeneratorConfigMixin",
+    "gen.FossilFeatureMixin",
+    "gen.HugeMushroomFeatureMixin",
     "gen.MegaTreeFeatureMixin",
+    "gen.OverworldChunkGeneratorMixin",
+    "gen.RavineCarverMixin",
+    "gen.UnderwaterCaveCarverMixin",
+    "gen.VinesFeatureMixin",
 
     "network.ChunkDataS2CPacketMixin",
     "network.ChunkDeltaUpdateS2CPacketMixin",
     "network.ClientPlayPacketListenerMixin",
 
     "server.IntegratedServerMixin",
+    "server.PlayerManagerMixin",
     "server.ServerPropertiesHandlerMixin",
     "server.ServerTickSchedulerMixin",
 
+    "structure.ShipwreckGeneratorMixin",
+
+    "world.BlockViewMixin",
     "world.WorldViewMixin",
     "world.WorldChunkMixin",
     "world.WorldMixin",
@@ -33,6 +56,8 @@
     "client.BuiltChunkStorageMixin",
     "client.WorldRendererMixin",
     "client.ChunkBorderDebugRendererMixin",
+
+    "entity.EntityMixin",
 
     "network.ClientPlayNetworkHandlerMixin"
   ],

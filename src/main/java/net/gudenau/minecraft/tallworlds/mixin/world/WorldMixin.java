@@ -20,4 +20,12 @@ public abstract class WorldMixin implements IWorld, AutoCloseable{
     private static int isHeightInvalid(int original){
         return 512;
     }
+    
+    @ModifyConstant(
+        method = "getEffectiveHeight",
+        constant = @Constant(intValue = 256)
+    )
+    private static int getEffectiveHeight(int original){
+        return 512;
+    }
 }

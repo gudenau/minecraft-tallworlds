@@ -9,6 +9,10 @@
     "chunk.ChunkTickSchedulerMixin",
     "chunk.ProtoChunkMixin",
 
+    "gen.BranchedTreeFeatureMixin",
+    "gen.DarkOakTreeFeatureMixin",
+    "gen.MegaTreeFeatureMixin",
+
     "network.ChunkDataS2CPacketMixin",
     "network.ChunkDeltaUpdateS2CPacketMixin",
     "network.ClientPlayPacketListenerMixin",

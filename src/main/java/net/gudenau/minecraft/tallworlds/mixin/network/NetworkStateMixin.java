@@ -26,21 +26,19 @@ import static net.minecraft.network.NetworkSide.CLIENTBOUND;
 
 @Mixin(NetworkState.class)
 public abstract class NetworkStateMixin{
-    @Shadow @Final public static NetworkState PLAY;
-    
     @Inject(
         method = "<clinit>",
         at = @At("TAIL")
     )
     private static void init(CallbackInfo callbackInfo){
         replacePacket(
-            PLAY,
+            NetworkState.PLAY,
             CLIENTBOUND,
             ChunkDeltaUpdateS2CPacket.class,
             LargeChunkDeltaUpdateS2CPacket.class, LargeChunkDeltaUpdateS2CPacket::new
         );
         replacePacket(
-            PLAY,
+            NetworkState.PLAY,
             CLIENTBOUND,
             LightUpdateS2CPacket.class,
             LargeLightUpdateS2CPacket.class, LargeLightUpdateS2CPacket::new

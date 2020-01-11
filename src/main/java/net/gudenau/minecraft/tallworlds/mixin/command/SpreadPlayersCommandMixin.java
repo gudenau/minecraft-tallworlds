@@ -7,7 +7,7 @@ import org.spongepowered.asm.mixin.injection.ModifyConstant;
 @Mixin(targets = "net/minecraft/server/command/SpreadPlayersCommand$Pile")
 public abstract class SpreadPlayersCommandMixin{
     @ModifyConstant(
-        method = "getY",
+        method = "getY(Lnet/minecraft/world/BlockView;)I",
         constant = @Constant(doubleValue = 256.0D)
     )
     private static double getY(double original){
@@ -15,7 +15,7 @@ public abstract class SpreadPlayersCommandMixin{
     }
     
     @ModifyConstant(
-        method = "getY",
+        method = "getY(Lnet/minecraft/world/BlockView;)I",
         constant = @Constant(intValue = 257)
     )
     private static int getY(int original){
@@ -23,7 +23,7 @@ public abstract class SpreadPlayersCommandMixin{
     }
     
     @ModifyConstant(
-        method = "isSafe",
+        method = "isSafe(Lnet/minecraft/world/BlockView;)Z",
         constant = @Constant(doubleValue = 256.0D)
     )
     private static double isSafe(double original){

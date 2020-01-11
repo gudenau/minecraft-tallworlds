@@ -27,7 +27,6 @@ public abstract class BuiltChunkStorageMixin{
         constant = @Constant(intValue =  16)
     )
     private int setViewDistance_sizeY(int original){
-        //return Math.max(original, sizeX);
-        return 32;
+        return Math.min(Math.max(original, sizeX), 32);
     }
 }

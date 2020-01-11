@@ -1,6 +1,7 @@
 package net.gudenau.minecraft.tallworlds.mixin.chunk;
 
 import net.gudenau.minecraft.tallworlds.fixes.network.LargeChunkDeltaUpdateS2CPacket;
+import net.gudenau.minecraft.tallworlds.fixes.network.LargeLightUpdateS2CPacket;
 import net.minecraft.client.network.packet.BlockUpdateS2CPacket;
 import net.minecraft.client.network.packet.ChunkDataS2CPacket;
 import net.minecraft.client.network.packet.LightUpdateS2CPacket;
@@ -8,6 +9,7 @@ import net.minecraft.network.Packet;
 import net.minecraft.server.world.ChunkHolder;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.ChunkPos;
+import net.minecraft.world.LightType;
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.WorldChunk;
 import net.minecraft.world.chunk.light.LightingProvider;
@@ -29,9 +31,6 @@ public abstract class ChunkHolderMixin{
     @Shadow @Final private ChunkPos pos;
     
     @Shadow private int blockUpdateCount;
-    @Shadow private int skyLightUpdateBits;
-    @Shadow private int blockLightUpdateBits;
-    @Shadow private int lightSentWithBlocksBits;
     @Shadow private int sectionsNeedingUpdateMask;
     
     @Shadow protected abstract void sendPacketToPlayersWatching(Packet<?> packet, boolean onlyOnWatchDistanceEdge);
@@ -39,6 +38,10 @@ public abstract class ChunkHolderMixin{
     @Shadow public abstract WorldChunk getWorldChunk();
     
     @Final private int[] realBlockUpdatePositions;
+    
+    private long realBlockLightUpdateBits;
+    private long realSkyLightUpdateBits;
+    private long realLightSentWithBlocksBits;
     
     @Inject(
         method = "<init>",
@@ -84,27 +87,44 @@ public abstract class ChunkHolderMixin{
     
     /**
      * @author gudenau
+     * @reason int -> long
+     */
+    @Overwrite
+    public void markForLightUpdate(LightType type, int y) {
+        WorldChunk worldChunk = getWorldChunk();
+        if (worldChunk != null) {
+            worldChunk.setShouldSave(true);
+            if (type == LightType.SKY) {
+                realSkyLightUpdateBits |= 1L << y - -1;
+            } else {
+                realBlockLightUpdateBits |= 1L << y - -1;
+            }
+        }
+    }
+    
+    /**
+     * @author gudenau
      * @reason short -> int
      */
     @Overwrite
     public void flushUpdates(WorldChunk worldChunk) {
-        if(blockUpdateCount != 0 || skyLightUpdateBits != 0 || blockLightUpdateBits != 0){
+        if(blockUpdateCount != 0 || realSkyLightUpdateBits != 0 || realBlockLightUpdateBits != 0){
             World world = worldChunk.getWorld();
             if(blockUpdateCount == 64){
-                lightSentWithBlocksBits = -1;
+                realLightSentWithBlocksBits = -1;
             }
         
-            if(skyLightUpdateBits != 0 || blockLightUpdateBits != 0) {
-                sendPacketToPlayersWatching(new LightUpdateS2CPacket(worldChunk.getPos(), lightingProvider, skyLightUpdateBits & ~lightSentWithBlocksBits, blockLightUpdateBits & ~lightSentWithBlocksBits), true);
-                int n = skyLightUpdateBits & lightSentWithBlocksBits;
-                int o = blockLightUpdateBits & lightSentWithBlocksBits;
+            if(realSkyLightUpdateBits != 0 || realBlockLightUpdateBits != 0) {
+                sendPacketToPlayersWatching(new LargeLightUpdateS2CPacket(worldChunk.getPos(), lightingProvider, realSkyLightUpdateBits & ~realLightSentWithBlocksBits, realBlockLightUpdateBits & ~realLightSentWithBlocksBits), true);
+                long n = realSkyLightUpdateBits & realLightSentWithBlocksBits;
+                long o = realBlockLightUpdateBits & realLightSentWithBlocksBits;
                 if (n != 0 || o != 0) {
-                    sendPacketToPlayersWatching(new LightUpdateS2CPacket(worldChunk.getPos(), lightingProvider, n, o), false);
+                    sendPacketToPlayersWatching(new LargeLightUpdateS2CPacket(worldChunk.getPos(), lightingProvider, n, o), false);
                 }
             
-                skyLightUpdateBits = 0;
-                blockLightUpdateBits = 0;
-                lightSentWithBlocksBits &= ~(skyLightUpdateBits & blockLightUpdateBits);
+                realSkyLightUpdateBits = 0;
+                realBlockLightUpdateBits = 0;
+                realLightSentWithBlocksBits &= ~(realSkyLightUpdateBits & realBlockLightUpdateBits);
             }
         
             if (blockUpdateCount == 1) {

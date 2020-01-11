@@ -35,6 +35,8 @@
     "network.ChunkDataS2CPacketMixin",
     "network.ChunkDeltaUpdateS2CPacketMixin",
     "network.ClientPlayPacketListenerMixin",
+    "network.LightUpdateS2CPacketMixin",
+    "network.NetworkStateMixin",
 
     "server.IntegratedServerMixin",
     "server.PlayerManagerMixin",
@@ -42,6 +44,10 @@
     "server.ServerTickSchedulerMixin",
 
     "structure.ShipwreckGeneratorMixin",
+
+    "util.BlockPosMixin",
+    "util.DirectionMixin",
+    "util.PacketByteBufMixin",
 
     "world.BlockViewMixin",
     "world.WorldViewMixin",

@@ -1,7 +1,6 @@
 package net.gudenau.minecraft.tallworlds.mixin.util;
 
 import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import javax.annotation.Nullable;
 import net.minecraft.util.StringIdentifiable;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.Vec3i;
@@ -38,7 +37,6 @@ public abstract class DirectionMixin implements StringIdentifiable{
      * @reason Kill the longs!
      */
     @Overwrite
-    @Nullable
     public static Direction fromVector(int x, int y, int z) {
         return VECTOR_TO_DIRECTION.get(vecToLong(x, y, z));
     }

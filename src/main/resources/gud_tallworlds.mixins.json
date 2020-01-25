@@ -3,69 +3,77 @@
   "package": "net.gudenau.minecraft.tallworlds.mixin",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
-    "biome.BiomeMixin",
-
     "block.ChorusFlowerBlockMixin",
-    "block.LavaFluidMixin",
 
-    "chunk.ChunkHolderMixin",
-    "chunk.ChunkMixin",
-    "chunk.ChunkSerializerMixin",
-    "chunk.ChunkTickSchedulerMixin",
-    "chunk.ProtoChunkMixin",
-
-    "command.SpreadPlayersCommandMixin",
-
-    "entity.FallingBlockEntityMixin",
-
-    "gen.BranchedTreeFeatureMixin",
-    "gen.CarverMixin",
-    "gen.ChunkGeneratorConfigMixin",
-    "gen.ChunkGeneratorMixin",
-    "gen.DarkOakTreeFeatureMixin",
-    "gen.FlatChunkGeneratorConfigMixin",
-    "gen.FossilFeatureMixin",
-    "gen.HugeMushroomFeatureMixin",
-    "gen.MegaTreeFeatureMixin",
-    "gen.OverworldChunkGeneratorMixin",
-    "gen.RavineCarverMixin",
-    "gen.UnderwaterCaveCarverMixin",
-    "gen.VinesFeatureMixin",
-
-    "network.ChunkDataS2CPacketMixin",
-    "network.ChunkDeltaUpdateS2CPacketMixin",
-    "network.ClientPlayPacketListenerMixin",
-    "network.LightUpdateS2CPacketMixin",
-    "network.NetworkStateMixin",
-
-    "server.IntegratedServerMixin",
-    "server.PlayerManagerMixin",
-    "server.ServerPropertiesHandlerMixin",
-    "server.ServerTickSchedulerMixin",
-
-    "structure.ShipwreckGeneratorMixin",
-
-    "util.BlockPosMixin",
-    "util.DirectionMixin",
-    "util.PacketByteBufMixin",
-
-    "world.BlockViewMixin",
-    "world.WorldViewMixin",
-    "world.WorldChunkMixin",
-    "world.WorldMixin",
-
-    "HeightmapMixin",
-    "SerializingRegionBasedStorageMixin",
-    "ThreadedAnvilChunkStorageMixin"
-  ],
-  "client": [
-    "client.BuiltChunkStorageMixin",
-    "client.WorldRendererMixin",
-    "client.ChunkBorderDebugRendererMixin",
+    "client.network.packet.ChunkDataS2CPacketMixin",
+    "client.network.packet.ChunkDeltaUpdateS2CPacketMixin",
+    "client.network.packet.LightUpdateS2CPacketMixin",
 
     "entity.EntityMixin",
+    "entity.FallingBlockEntityMixin",
 
-    "network.ClientPlayNetworkHandlerMixin"
+    "fluid.LavaFluidMixin",
+
+    "network.listener.ClientPlayPacketListenerMixin",
+
+    "network.NetworkStateMixin",
+
+    "server.command.SpreadPlayersCommand$PileMixin",
+
+    "server.dedicated.ServerPropertiesHandlerMixin",
+
+    "server.integrated.IntegratedServerMixin",
+
+    "server.world.ChunkHolderMixin",
+    "server.world.ServerTickSchedulerMixin",
+    "server.world.ThreadedAnvilChunkStorageMixin",
+
+    "server.PlayerManagerMixin",
+
+    "structure.ShipwreckGenerator$PieceMixin",
+
+    "util.math.BlockPosMixin",
+    "util.math.DirectionMixin",
+
+    "util.PacketByteBufMixin",
+
+    "world.biome.BiomeMixin",
+
+    "world.chunk.WorldChunkMixin",
+    "world.chunk.ProtoChunkMixin",
+    "world.chunk.ChunkMixin",
+
+    "world.gen.carver.UnderwaterCaveCarverMixin",
+    "world.gen.carver.RavineCarverMixin",
+    "world.gen.carver.CarverMixin",
+
+    "world.gen.chunk.FlatChunkGeneratorConfigMixin",
+    "world.gen.chunk.ChunkGeneratorConfigMixin",
+    "world.gen.chunk.ChunkGeneratorMixin",
+    "world.gen.chunk.OverworldChunkGeneratorMixin",
+
+    "world.gen.feature.BranchedTreeFeatureMixin",
+    "world.gen.feature.FossilFeatureMixin",
+    "world.gen.feature.HugeMushroomFeatureMixin",
+    "world.gen.feature.MegaTreeFeatureMixin",
+    "world.gen.feature.DarkOakTreeFeatureMixin",
+    "world.gen.feature.VinesFeatureMixin",
+
+    "world.storage.SerializingRegionBasedStorageMixin",
+
+    "world.WorldMixin",
+    "world.BlockViewMixin",
+    "world.WorldViewMixin",
+    "world.ChunkSerializerMixin",
+    "world.ChunkTickSchedulerMixin",
+    "world.HeightmapMixin"
+  ],
+  "client": [
+    "client.network.ClientPlayNetworkHandlerMixin",
+
+    "client.render.debug.ChunkBorderDebugRendererMixin",
+    "client.render.BuiltChunkStorageMixin",
+    "client.render.WorldRendererMixin"
   ],
   "injectors": {
     "defaultRequire": 1

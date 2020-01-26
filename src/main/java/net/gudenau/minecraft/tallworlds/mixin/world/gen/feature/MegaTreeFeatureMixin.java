@@ -9,6 +9,10 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.Constant;
 import org.spongepowered.asm.mixin.injection.ModifyConstant;
 
+/**
+ * Changes:
+ *  - Effectivly nop out height checks
+ * */
 @Mixin(MegaTreeFeature.class)
 public abstract class MegaTreeFeatureMixin<T extends TreeFeatureConfig> extends AbstractTreeFeature<T>{
     private MegaTreeFeatureMixin(Function<Dynamic<?>, ? extends T> configFactory){
@@ -21,6 +25,6 @@ public abstract class MegaTreeFeatureMixin<T extends TreeFeatureConfig> extends 
         expect = 2
     )
     private static int doesTreeFit(int original){
-        return 512;
+        return Integer.MAX_VALUE;
     }
 }

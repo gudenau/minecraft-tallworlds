@@ -32,6 +32,8 @@
 
     "structure.ShipwreckGenerator$PieceMixin",
 
+    "util.crash.CrashReportMixin",
+
     "util.math.BlockPosMixin",
     "util.math.DirectionMixin",
 

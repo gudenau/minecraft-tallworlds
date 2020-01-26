@@ -9,6 +9,10 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.Constant;
 import org.spongepowered.asm.mixin.injection.ModifyConstant;
 
+/**
+ * Changes:
+ *  - Effectivly nop out height checks
+ * */
 @Mixin(HugeMushroomFeature.class)
 public abstract class HugeMushroomFeatureMixin extends Feature<HugeMushroomFeatureConfig>{
     private HugeMushroomFeatureMixin(Function<Dynamic<?>, ? extends HugeMushroomFeatureConfig> configDeserializer){
@@ -20,6 +24,6 @@ public abstract class HugeMushroomFeatureMixin extends Feature<HugeMushroomFeatu
         constant = @Constant(intValue = 256)
     )
     private static int method_23374(int original){
-        return 512;
+        return Integer.MAX_VALUE;
     }
 }

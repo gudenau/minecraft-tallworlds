@@ -21,7 +21,7 @@ public abstract class ServerPropertiesHandlerMixin extends AbstractPropertiesHan
         method = "<init>",
         constant = @Constant(intValue = 256)
     )
-    private static int constructor(int original){
+    private static int init(int original){
         return 512;
     }
 }

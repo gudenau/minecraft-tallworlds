@@ -4,6 +4,10 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.Constant;
 import org.spongepowered.asm.mixin.injection.ModifyConstant;
 
+/**
+ * Changes:
+ *  - Allow players to be spread up to 513 blocks (up from 257)
+ * */
 @Mixin(targets = "net/minecraft/server/command/SpreadPlayersCommand$Pile")
 public abstract class SpreadPlayersCommand$PileMixin{
     @ModifyConstant(

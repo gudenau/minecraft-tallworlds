@@ -15,7 +15,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 /**
  * Changes:
- *  - Change height from 16 chunks to 32
+ *  - Change height from 16 chunks to 16-32 depending on view distance
  * */
 @Environment(EnvType.CLIENT)
 @Mixin(BuiltChunkStorage.class)

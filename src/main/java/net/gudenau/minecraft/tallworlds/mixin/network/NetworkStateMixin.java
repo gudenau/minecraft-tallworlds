@@ -24,6 +24,12 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import static net.minecraft.network.NetworkSide.CLIENTBOUND;
 
+/**
+ * Changes:
+ *  - Add in a hack to replace packets
+ *  - Replace ChunkDeltaUpdateS2CPacket
+ *  - Replace LightUpdateS2CPacket
+ * */
 @Mixin(NetworkState.class)
 public abstract class NetworkStateMixin{
     @Inject(
@@ -83,25 +89,4 @@ public abstract class NetworkStateMixin{
         }
         throw new RuntimeException();
     }
-    
-    /*
-    @ModifyConstant(
-        method = "<clinit>",
-        constant = @Constant(classValue = ChunkDeltaUpdateS2CPacket.class)
-    )
-    private static Class<?> init(Class<?> original){
-        return LargeChunkDeltaUpdateS2CPacket.class;
-    }
-    
-    @ModifyArg(
-        method = "<clinit>",
-        at = @At(
-            target = "Lnet/minecraft/network/NetworkState$PacketHandler;register(Ljava/lang/Class;Ljava/util/function/Supplier;)Lnet/minecraft/network/NetworkState$PacketHandler;"
-        )
-    )
-    private Supplier<?> init(Supplier<?> original){
-        return ChunkDeltaUpdateS2CPacket::new;
-    }
-    */
-    
 }

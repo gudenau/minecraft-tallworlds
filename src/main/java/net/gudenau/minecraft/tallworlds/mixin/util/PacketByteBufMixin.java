@@ -7,15 +7,19 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 import org.spongepowered.asm.mixin.Shadow;
 
+/**
+ * Changes:
+ *  - Read and write BlockPos with ints instead of a long
+ * */
 @Mixin(PacketByteBuf.class)
 public abstract class PacketByteBufMixin extends ByteBuf{
     @Shadow public abstract int readVarInt();
     @Shadow public abstract PacketByteBuf writeVarInt(int value);
     
-    /* * Disabled for now.
+    /**
      * @author gudenau
      * @reason Kill the longs!
-     * /
+     */
     @Overwrite
     public BlockPos readBlockPos() {
         return new BlockPos(
@@ -23,12 +27,12 @@ public abstract class PacketByteBufMixin extends ByteBuf{
             readVarInt(),
             readVarInt()
         );
-    }*/
+    }
     
-    /* * Disabled for now.
+    /**
      * @author gudenau
      * @reason Kill the longs!
-     * /
+     */
     @Overwrite
     public PacketByteBuf writeBlockPos(BlockPos blockPos) {
         writeVarInt(blockPos.getX());
@@ -36,5 +40,4 @@ public abstract class PacketByteBufMixin extends ByteBuf{
         writeVarInt(blockPos.getZ());
         return (PacketByteBuf)(Object)this;
     }
-     */
 }

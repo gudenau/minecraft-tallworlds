@@ -6,6 +6,10 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.Constant;
 import org.spongepowered.asm.mixin.injection.ModifyConstant;
 
+/**
+ * Changes:
+ *  - Effectivly nop out height check
+ * */
 @Mixin(LavaFluid.class)
 public abstract class LavaFluidMixin extends BaseFluid{
     @ModifyConstant(
@@ -13,6 +17,6 @@ public abstract class LavaFluidMixin extends BaseFluid{
         constant = @Constant(intValue = 256)
     )
     private static int method_15817(int original){
-        return 512;
+        return Integer.MAX_VALUE;
     }
 }

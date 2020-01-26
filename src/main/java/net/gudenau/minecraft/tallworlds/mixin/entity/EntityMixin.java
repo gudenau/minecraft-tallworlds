@@ -9,6 +9,10 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.Constant;
 import org.spongepowered.asm.mixin.injection.ModifyConstant;
 
+/**
+ * Changes:
+ *  - Allow afterSpawn to seek higher than 256 blocks
+ * */
 @Mixin(Entity.class)
 public abstract class EntityMixin implements Nameable, CommandOutput{
     @Environment(EnvType.CLIENT)

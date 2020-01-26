@@ -8,6 +8,10 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
+/**
+ * Changes:
+ *  - (Disabled) Throw a fit on long calls.
+ * */
 @Mixin(BlockPos.class)
 public abstract class BlockPosMixin extends Vec3i implements DynamicSerializable{
     private BlockPosMixin(int x, int y, int z){

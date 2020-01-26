@@ -9,6 +9,10 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.Constant;
 import org.spongepowered.asm.mixin.injection.ModifyConstant;
 
+/**
+ * Changes:
+ *  - Change height limit to 512 from 256
+ * */
 @Mixin(UnderwaterCaveCarver.class)
 public abstract class UnderwaterCaveCarverMixin extends CaveCarver{
     private UnderwaterCaveCarverMixin(Function<Dynamic<?>, ? extends ProbabilityConfig> configDeserializer, int heightLimit){

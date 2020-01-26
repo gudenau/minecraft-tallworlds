@@ -11,6 +11,10 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.Constant;
 import org.spongepowered.asm.mixin.injection.ModifyConstant;
 
+/**
+ * Changes:
+ *  - Effectivly nop out height checks
+ * */
 @Mixin(DarkOakTreeFeature.class)
 public abstract class DarkOakTreeFeatureMixin extends AbstractTreeFeature<MegaTreeFeatureConfig>{
     private DarkOakTreeFeatureMixin(Function<Dynamic<?>, ? extends MegaTreeFeatureConfig> configFactory){
@@ -22,6 +26,6 @@ public abstract class DarkOakTreeFeatureMixin extends AbstractTreeFeature<MegaTr
         constant = @Constant(intValue = 256)
     )
     private static int generate(int original){
-        return 512;
+        return Integer.MAX_VALUE;
     }
 }

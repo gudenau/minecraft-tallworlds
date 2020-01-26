@@ -9,6 +9,10 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.Constant;
 import org.spongepowered.asm.mixin.injection.ModifyConstant;
 
+/**
+ * Changes:
+ *  - Change max height to 512 from 256
+ * */
 @Mixin(FossilFeature.class)
 public abstract class FossilFeatureMixin extends Feature<DefaultFeatureConfig>{
     private FossilFeatureMixin(Function<Dynamic<?>, ? extends DefaultFeatureConfig> configDeserializer){

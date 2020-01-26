@@ -9,6 +9,10 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.Constant;
 import org.spongepowered.asm.mixin.injection.ModifyConstant;
 
+/**
+ * Changes:
+ *  - Effectivly nop out height checks
+ * */
 @Mixin(BranchedTreeFeature.class)
 public abstract class BranchedTreeFeatureMixin<T extends BranchedTreeFeatureConfig> extends AbstractTreeFeature<T>{
     private BranchedTreeFeatureMixin(Function<Dynamic<?>, ? extends T> configFactory){
@@ -21,6 +25,6 @@ public abstract class BranchedTreeFeatureMixin<T extends BranchedTreeFeatureConf
         expect = 3
     )
     private static int findPositionToGenerate(int original){
-        return 512;
+        return Integer.MAX_VALUE;
     }
 }

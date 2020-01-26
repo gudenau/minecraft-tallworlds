@@ -16,6 +16,10 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
+/**
+ * Changes:
+ *  - Prevent use by throwing exceptions
+ * */
 @Mixin(LightUpdateS2CPacket.class)
 public abstract class LightUpdateS2CPacketMixin implements Packet<ClientPlayPacketListener>{
 //    @Inject(

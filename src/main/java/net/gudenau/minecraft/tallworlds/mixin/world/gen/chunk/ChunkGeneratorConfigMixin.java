@@ -5,6 +5,10 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.Constant;
 import org.spongepowered.asm.mixin.injection.ModifyConstant;
 
+/**
+ * Changes:
+ *  - Make getMinY return 512 instead of 256
+ * */
 @Mixin(ChunkGeneratorConfig.class)
 public abstract class ChunkGeneratorConfigMixin{
     @ModifyConstant(

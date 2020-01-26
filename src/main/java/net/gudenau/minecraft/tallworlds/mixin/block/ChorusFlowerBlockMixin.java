@@ -6,6 +6,10 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.Constant;
 import org.spongepowered.asm.mixin.injection.ModifyConstant;
 
+/**
+ * Changes:
+ *  - Effectivly nop out a height check
+ * */
 @Mixin(ChorusFlowerBlock.class)
 public abstract class ChorusFlowerBlockMixin extends Block{
     private ChorusFlowerBlockMixin(Settings settings){
@@ -17,6 +21,6 @@ public abstract class ChorusFlowerBlockMixin extends Block{
         constant = @Constant(intValue = 256)
     )
     private static int scheduledTick(int original){
-        return 512;
+        return Integer.MAX_VALUE;
     }
 }

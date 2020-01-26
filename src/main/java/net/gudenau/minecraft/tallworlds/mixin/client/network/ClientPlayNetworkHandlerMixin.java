@@ -30,6 +30,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
  * Changes:
  *  - Throw an exception on old onChunkDeltaUpdate
  *  - Add new onChunkDeltaUpdate
+ *  - Throw an exception on old onLightUpdate
+ *  - Add new onLightUpdate
  * */
 @Environment(EnvType.CLIENT)
 @Mixin(ClientPlayNetworkHandler.class)

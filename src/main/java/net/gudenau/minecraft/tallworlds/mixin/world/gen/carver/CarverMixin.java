@@ -6,6 +6,10 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.Constant;
 import org.spongepowered.asm.mixin.injection.ModifyConstant;
 
+/**
+ * Changes:
+ *  - Change cave height limit to 512 from 256
+ * */
 @Mixin(Carver.class)
 public abstract class CarverMixin<C extends CarverConfig>{
     @ModifyConstant(

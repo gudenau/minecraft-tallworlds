@@ -3,7 +3,7 @@ package net.gudenau.minecraft.tallworlds.mixin.server.world;
 import com.mojang.datafixers.DataFixer;
 import java.io.File;
 import net.gudenau.minecraft.tallworlds.fixes.network.LargeLightUpdateS2CPacket;
-import net.minecraft.client.network.packet.LightUpdateS2CPacket;
+import net.minecraft.network.packet.s2c.play.LightUpdateS2CPacket;
 import net.minecraft.server.world.ChunkHolder;
 import net.minecraft.server.world.ThreadedAnvilChunkStorage;
 import net.minecraft.util.math.ChunkPos;
@@ -29,7 +29,7 @@ public abstract class ThreadedAnvilChunkStorageMixin extends VersionedChunkStora
         method = "sendChunkDataPackets",
         at = @At(
             value = "NEW",
-            target = "net/minecraft/client/network/packet/LightUpdateS2CPacket"
+            target = "net/minecraft/network/packet/s2c/play/LightUpdateS2CPacket"
         )
     )
     private LightUpdateS2CPacket sendChunkDataPackets(ChunkPos pos, LightingProvider lightingProvider){

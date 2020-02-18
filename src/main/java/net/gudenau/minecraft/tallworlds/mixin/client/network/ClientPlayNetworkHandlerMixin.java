@@ -8,11 +8,11 @@ import net.gudenau.minecraft.tallworlds.fixes.network.LargeChunkDeltaUpdateS2CPa
 import net.gudenau.minecraft.tallworlds.fixes.network.LargeLightUpdateS2CPacket;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.network.ClientPlayNetworkHandler;
-import net.minecraft.client.network.packet.ChunkDeltaUpdateS2CPacket;
-import net.minecraft.client.network.packet.LightUpdateS2CPacket;
 import net.minecraft.client.world.ClientWorld;
 import net.minecraft.network.NetworkThreadUtils;
 import net.minecraft.network.listener.ClientPlayPacketListener;
+import net.minecraft.network.packet.s2c.play.ChunkDeltaUpdateS2CPacket;
+import net.minecraft.network.packet.s2c.play.LightUpdateS2CPacket;
 import net.minecraft.recipe.RecipeManager;
 import net.minecraft.util.math.ChunkSectionPos;
 import net.minecraft.world.LightType;

@@ -5,16 +5,16 @@
   "mixins": [
     "block.ChorusFlowerBlockMixin",
 
-    "client.network.packet.ChunkDataS2CPacketMixin",
-    "client.network.packet.ChunkDeltaUpdateS2CPacketMixin",
-    "client.network.packet.LightUpdateS2CPacketMixin",
-
     "entity.EntityMixin",
     "entity.FallingBlockEntityMixin",
 
     "fluid.LavaFluidMixin",
 
     "network.listener.ClientPlayPacketListenerMixin",
+
+    "network.packet.s2c.play.ChunkDataS2CPacketMixin",
+    "network.packet.s2c.play.ChunkDeltaUpdateS2CPacketMixin",
+    "network.packet.s2c.play.LightUpdateS2CPacketMixin",
 
     "network.NetworkStateMixin",
 

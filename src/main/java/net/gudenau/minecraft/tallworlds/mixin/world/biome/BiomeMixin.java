@@ -12,7 +12,7 @@ import org.spongepowered.asm.mixin.injection.ModifyConstant;
 @Mixin(Biome.class)
 public abstract class BiomeMixin{
     @ModifyConstant(
-        method = "canSetSnow(Lnet/minecraft/world/WorldView;Lnet/minecraft/util/math/BlockPos;Z)Z",
+        method = "canSetSnow",
         constant = @Constant(intValue = 256)
     )
     private static int canSetSnow(int original){
@@ -20,7 +20,7 @@ public abstract class BiomeMixin{
     }
     
     @ModifyConstant(
-        method = "canSetIce",
+        method = "canSetIce(Lnet/minecraft/world/WorldView;Lnet/minecraft/util/math/BlockPos;Z)Z",
         constant = @Constant(intValue = 256)
     )
     private static int canSetIce(int original){

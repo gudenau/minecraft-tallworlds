@@ -1,8 +1,8 @@
-package net.gudenau.minecraft.tallworlds.mixin.client.network.packet;
+package net.gudenau.minecraft.tallworlds.mixin.network.packet.s2c.play;
 
-import net.minecraft.client.network.packet.ChunkDeltaUpdateS2CPacket;
 import net.minecraft.network.Packet;
 import net.minecraft.network.listener.ClientPlayPacketListener;
+import net.minecraft.network.packet.s2c.play.ChunkDeltaUpdateS2CPacket;
 import net.minecraft.world.chunk.WorldChunk;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;

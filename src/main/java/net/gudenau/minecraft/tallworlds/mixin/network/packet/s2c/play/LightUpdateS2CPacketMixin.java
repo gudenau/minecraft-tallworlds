@@ -1,12 +1,12 @@
-package net.gudenau.minecraft.tallworlds.mixin.client.network.packet;
+package net.gudenau.minecraft.tallworlds.mixin.network.packet.s2c.play;
 
 import java.io.IOException;
 import java.util.List;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.minecraft.client.network.packet.LightUpdateS2CPacket;
 import net.minecraft.network.Packet;
 import net.minecraft.network.listener.ClientPlayPacketListener;
+import net.minecraft.network.packet.s2c.play.LightUpdateS2CPacket;
 import net.minecraft.util.PacketByteBuf;
 import net.minecraft.util.math.ChunkPos;
 import net.minecraft.world.chunk.light.LightingProvider;
